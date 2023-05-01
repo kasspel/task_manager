@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:orientation="vertical">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/send_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="@drawable/send_message">
+
+        <ImageView
+            android:id="@+id/send_photo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/send_text"
+            app:layout_constraintStart_toEndOf="@+id/attach_file"
+            app:layout_constraintTop_toBottomOf="@+id/send_name"
+            app:srcCompat="@drawable/ic_profile" />
+
+        <TextView
+            android:id="@+id/send_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:maxWidth="200dp"
+            android:text="hello"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/send_photo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/send_photo" />
+
+        <ImageView
+            android:id="@+id/attach_file"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/send_photo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/send_photo"
+            app:srcCompat="@drawable/ic_file" />
+
+        <TextView
+            android:id="@+id/send_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:maxWidth="100dp"
+            android:text="Anna"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/send_photo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/recive_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:background="@drawable/recive_message">
+
+        <ImageView
+            android:id="@+id/recive_photo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/recive_text"
+            app:layout_constraintStart_toEndOf="@+id/attach_recive_file"
+            app:layout_constraintTop_toBottomOf="@+id/recive_name"
+            app:srcCompat="@drawable/ic_profile" />
+
+        <TextView
+            android:id="@+id/recive_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:maxWidth="200dp"
+            android:text="hello"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/recive_photo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/recive_photo" />
+
+        <ImageView
+            android:id="@+id/attach_recive_file"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/recive_photo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/recive_photo"
+            app:srcCompat="@drawable/ic_file" />
+
+        <TextView
+            android:id="@+id/recive_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:maxWidth="100dp"
+            android:text="Anna"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/recive_photo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

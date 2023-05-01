@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_host"
+    app:startDestination="@id/projectsFragment">
+    <fragment
+        android:id="@+id/projectsFragment"
+        android:name="com.example.taskmanager.ui.ProjectsFragment"
+        android:label="Проекты"
+        tools:layout="@layout/fragment_projects_new" />
+    <fragment
+        android:id="@+id/archiveFragment"
+        android:name="com.example.taskmanager.ui.ArchiveFragment"
+        android:label="Архив"
+        tools:layout="@layout/fragment_archive" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.taskmanager.ui.ProfileFragment"
+        android:label="Профиль"
+        tools:layout="@layout/fragment_profile_new" />
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.example.taskmanager.ui.AboutUsFragment"
+        android:label="О приложении"
+        tools:layout="@layout/fragment_about_us" />
+</navigation>

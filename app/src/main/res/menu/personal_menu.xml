@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/delete_project"
+        android:title="Удалить"
+        android:icon="@drawable/ic_delete"
+        app:showAsAction="always"/>
+    <item android:id="@+id/archive_project"
+        android:title="В архив"
+        android:icon="@drawable/ic_archive"
+        app:showAsAction="always"/>
+    <item android:id="@+id/about_project"
+        android:title="Информация"
+        android:icon="@drawable/ic_info"
+        app:showAsAction="always"/>
+
+</menu>

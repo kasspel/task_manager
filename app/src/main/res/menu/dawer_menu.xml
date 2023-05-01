@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/projectsFragment"
+        android:title="Проекты"
+        android:icon="@drawable/ic_projects"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/archiveFragment"
+        android:title="Архив"
+        android:icon="@drawable/ic_archive"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/profileFragment"
+        android:title="Профиль"
+        android:icon="@drawable/ic_profile"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/aboutUsFragment"
+        android:title="О приложении"
+        android:icon="@drawable/ic_about"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/exit"
+        android:title="Выйти"
+        android:icon="@drawable/ic_exit"
+        app:showAsAction="ifRoom"/>
+</menu>

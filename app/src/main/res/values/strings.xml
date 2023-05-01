@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Task Manager</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="terms_use"><![CDATA[Продолжая с использованием указанного выше сервиса, вы соглашаетесь с <a href="#1">Условиями использования</a> и <a href="#2">Политикой конфиденциальности</a> Task Manager]]></string>
+    <string name="projects">Проекты</string>
+    <string name="tools">Инструменты планирования:</string>
+    <string name="person_purpose">Личные цели</string>
+    <string name="notes">Заметки</string>
+    <string name="username">Имя пользователя</string>
+    <string name="input_google">Войти по Google почте</string>
+    <string name="purpose">Ставь задачи, достигай цели!</string>
+    <string name="polit"><u>Политика Конфиденциальности</u></string>
+    <string name="use"><u>Условия использования</u></string>
+</resources>
