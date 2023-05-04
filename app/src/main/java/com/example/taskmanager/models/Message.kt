@@ -9,4 +9,6 @@ data class Message(
     val text: String, //текст сообщения
     val file: String,//ссылка на файл прикрепленный к сообщению
     val filename: String,//имя файла
+
+    val name2: String //название проекта
 )

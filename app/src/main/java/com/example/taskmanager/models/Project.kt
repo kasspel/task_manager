@@ -6,6 +6,6 @@ data class Project(
     val desc: String,
     val startDate: String,
     val endDate: String,
-    val timestamp: Long, //время создания проекта?
+    val timestamp: Long, //время создания проекта
     val pid: String = "",
 )

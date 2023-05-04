@@ -133,6 +133,7 @@ class InfoProjectActivity : AppCompatActivity() {
                     db.collection("members").document(mid).update(memberData as Map<String, Any>)
                 }
                 Util.setAlarmDedline(this,project.endDate, pid, project.name)
+                Util.setAlarmDedline5(this,project.endDate, pid, project.name)
             }
             Toast.makeText(this, "Проект обновлен", Toast.LENGTH_SHORT).show()
             Repository.selectedUsersList.clear()

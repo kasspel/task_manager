@@ -5,16 +5,20 @@ import android.app.AlarmManager
 import android.app.DownloadManager
 import android.app.PendingIntent
 import android.content.Context
+import android.content.Context.ALARM_SERVICE
 import android.content.Intent
 import android.database.Cursor
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.net.Uri
+import android.os.Build
 import android.os.Environment
 import android.provider.OpenableColumns
 import android.util.Log
 import android.widget.TextView
+import androidx.core.content.ContextCompat.getSystemService
+import com.example.taskmanager.TimeMessageNotification
 import com.example.taskmanager.TimeNotification
 import com.example.taskmanager.TimeTaskNotification
 import com.google.firebase.firestore.ktx.firestore
@@ -187,7 +191,7 @@ object Util {
 
         val am = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, TimeNotification::class.java)
-        intent.putExtra("message","Через сутки время окончания проекта")
+        intent.putExtra("message","Остался день до окончания проекта")
         intent.putExtra("title",name)
         intent.putExtra("pid", pid)
         intent.putExtra("uid", Repository.user?.uid ?: "")
@@ -198,6 +202,63 @@ object Util {
         //am.cancel(pendingIntent)
         am.set(AlarmManager.RTC_WAKEUP, amils, pendingIntent)
         Log.d("anna", "test")
+    }
+
+    fun setAlarmDedline5(context: Context,date: String, pid: String, name: String){
+        val dt = date.split(".")
+        val day = dt[0].toInt() - 1
+        val month = dt[1].toInt() - 1
+        val year = dt[2].toInt()
+
+        val c = Calendar.getInstance()
+        c.set(Calendar.YEAR, year)
+        c.set(Calendar.MONTH, month)
+        c.set(Calendar.DAY_OF_MONTH, day)
+        val _hour = c.get(Calendar.HOUR_OF_DAY)
+        val _minute = c.get(Calendar.MINUTE)
+        val _second = c.get(Calendar.SECOND)
+
+        val endmils = c.timeInMillis
+        val amils = endmils - 43170000L
+        c.timeInMillis = amils
+        val hour = c.get(Calendar.HOUR_OF_DAY)
+        val minute = c.get(Calendar.MINUTE)
+        val second = c.get(Calendar.SECOND)
+        val y = c.get(Calendar.YEAR)
+        val m = c.get(Calendar.MONTH) + 1
+        val d = c.get(Calendar.DAY_OF_MONTH) + 1
+
+        val am = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(context, TimeNotification::class.java)
+        intent.putExtra("message","До окончания проекта осталось 5 дней")
+        intent.putExtra("title",name)
+        intent.putExtra("pid", pid)
+        intent.putExtra("uid", Repository.user?.uid ?: "")
+        val pendingIntent = PendingIntent.getBroadcast(
+            context, 0,
+            intent, PendingIntent.FLAG_CANCEL_CURRENT
+        )
+        //am.cancel(pendingIntent)
+        am.set(AlarmManager.RTC_WAKEUP, amils, pendingIntent)
+        Log.d("anna", "test")
+    }
+    fun setAlarmDedline2(context: Context, pid: String, name2: String){
+        val c = Calendar.getInstance()
+        // Оставляем только текущую секунду, чтобы установить время на 0 миллисекунд
+        c.set(Calendar.SECOND, 0)
+        val time = c.timeInMillis
+
+        val am = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(context, TimeNotification::class.java)
+        intent.putExtra("message","Новое сообщение в чате")
+        intent.putExtra("title",name2)
+        intent.putExtra("pid", pid)
+        intent.putExtra("uid", Repository.user?.uid ?: "")
+        val pendingIntent = PendingIntent.getBroadcast(
+            context, 0,
+            intent, PendingIntent.FLAG_CANCEL_CURRENT
+        )
+        am.setExact(AlarmManager.RTC_WAKEUP, time, pendingIntent)
     }
 
     @SuppressLint("Range")

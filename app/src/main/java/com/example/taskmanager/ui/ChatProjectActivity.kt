@@ -135,7 +135,7 @@ class ChatProjectActivity : AppCompatActivity() {
         val uid = Firebase.auth.currentUser?.uid ?: return
         val pid = Repository.currentProject?.pid ?: return
 
-        //получить токены для отправки пушей участникам проекта ??КАКИХ ЕЩЕ ПУШЕЙ
+        //получить токены для отправки пушей участникам проекта
         initFcmTokens()
 
         //кнопка отправить сообщение
@@ -158,7 +158,9 @@ class ChatProjectActivity : AppCompatActivity() {
                 val photo = Repository.user?.photo ?: ""
                 val email = Repository.user?.email ?: ""
                 val name = Repository.user?.name ?: ""
+                val name2 = Repository.currentProject?.name ?: ""
                 val userName = if (name.isNotEmpty()) name else email
+
                 val messageData = hashMapOf(
                     "pid" to pid,
                     "uid" to uid,
@@ -168,9 +170,8 @@ class ChatProjectActivity : AppCompatActivity() {
                     "photo" to photo,
                     "timestamp" to timestamp,
                     "name" to userName,
+                    "name2" to name2,
                 )
-
-
 
                 currentFileFullPath = ""
                 currentFileName = ""
@@ -180,6 +181,7 @@ class ChatProjectActivity : AppCompatActivity() {
 
                 progressView.visibility = View.VISIBLE
                 db.collection("messages").document().set(messageData).addOnCompleteListener {
+                    Util.setAlarmDedline2(this, pid, name2)
                     sendPush(userName, text)
                     progressView.visibility = View.GONE
                     messageView.setText("")
@@ -191,6 +193,7 @@ class ChatProjectActivity : AppCompatActivity() {
                         messageView.setText("")
                     }
             }
+
         }
 
         //загрузить список сообщений из базы данных
@@ -205,6 +208,7 @@ class ChatProjectActivity : AppCompatActivity() {
                         val _pid = doc["pid"] as String? ?: ""
                         val _uid = doc["uid"] as String? ?: ""
                         val _name = doc["name"] as String? ?: ""
+                        val _name2 = doc["name2"] as String? ?: ""
                         val _photo = doc["photo"] as String? ?: ""
                         val _file = doc["file"] as String? ?: ""
                         val _timestamp = doc["timestamp"] as Long? ?: 0L
@@ -214,6 +218,7 @@ class ChatProjectActivity : AppCompatActivity() {
                             pid = _pid,
                             uid = _uid,
                             name = _name,
+                            name2 = _name2,
                             photo = _photo,
                             file = _file,
                             timestamp = _timestamp,
@@ -232,6 +237,7 @@ class ChatProjectActivity : AppCompatActivity() {
                 Util.downloadFileFromPath(this,message.filename,message.text,filepath)
             }
         }
+
     }
 
     //загрузить выбранный файл в облако
@@ -321,7 +327,7 @@ class ChatProjectActivity : AppCompatActivity() {
             }
     }
 
-    //отправить пуш всем участкикам проекта ??ПУШ
+    //отправить пуш всем участкикам проекта
     private fun sendPush(title: String, text: String) {
         if (fcmTokens.isEmpty()) return
         for (fcmToken in fcmTokens) {

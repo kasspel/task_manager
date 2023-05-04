@@ -74,6 +74,7 @@ class AddPersonalProjectActivity : AppCompatActivity() {
         db.collection("projects").document(project_id).set(data).addOnSuccessListener {
             Toast.makeText(this, "Личная цель сохранена", Toast.LENGTH_SHORT).show()
             Util.setAlarmDedline(this, project.endDate, project_id, project.name)
+            Util.setAlarmDedline5(this, project.endDate, project_id, project.name)
             Repository.selectedUsersList.clear()
             finish()
 

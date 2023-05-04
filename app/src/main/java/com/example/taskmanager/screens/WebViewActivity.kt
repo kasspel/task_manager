@@ -9,7 +9,6 @@ import com.example.taskmanager.R
 
 class WebViewActivity : AppCompatActivity() {
     private lateinit var webView: WebView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_webview)
